@@ -1,0 +1,202 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/animation';
+
+.ranking-page {
+  min-height: 100vh;
+  background: $bg-primary;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 180rpx);
+}
+
+// Tab 切换
+.tabs {
+  @include flex-center;
+  background: white;
+  padding: $spacing-sm 0;
+  border-bottom: 1rpx solid $gray-100;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tab-item {
+  flex: 1;
+  @include flex-center;
+  padding: $spacing-sm 0;
+  position: relative;
+  
+  &.active .tab-text {
+    color: $primary;
+    font-weight: 600;
+  }
+  
+  &.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48rpx;
+    height: 4rpx;
+    background: $primary;
+    border-radius: 2rpx;
+    animation: tab-indicator 200ms $ease-out;
+  }
+}
+
+.tab-text {
+  font-size: $font-md;
+  color: $gray-600;
+  transition: all 200ms $ease-out;
+}
+
+@keyframes tab-indicator {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 48rpx;
+    opacity: 1;
+  }
+}
+
+// 榜单内容
+.ranking-content {
+  height: calc(100vh - 100rpx - env(safe-area-inset-bottom));
+}
+
+.ranking-list {
+  background: white;
+  margin: $spacing-md;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  animation: fade-in 300ms $ease-out;
+}
+
+// 骨架屏
+.ranking-skeleton,
+.skeleton-item,
+.skeleton-province-item {
+  background: white;
+  margin: $spacing-md;
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.skeleton-item,
+.skeleton-province-item {
+  @include flex-start;
+  padding: $spacing-md;
+  gap: $spacing-md;
+  
+  & + & {
+    border-top: 1rpx solid $gray-100;
+  }
+}
+
+// 省份榜单
+.province-list {
+  background: white;
+  margin: $spacing-md;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  animation: fade-in 300ms $ease-out;
+}
+
+.province-item {
+  @include flex-start;
+  padding: $spacing-md;
+  gap: $spacing-md;
+  transition: background 200ms $ease-out;
+  
+  & + & {
+    border-top: 1rpx solid $gray-100;
+  }
+  
+  &.is-mine {
+    background: rgba(255, 107, 53, 0.05);
+    
+    .province-rank {
+      background: $primary;
+      color: white;
+    }
+  }
+}
+
+.province-rank {
+  @include flex-center;
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: $gray-100;
+  font-size: $font-sm;
+  font-weight: 600;
+  color: $gray-600;
+  flex-shrink: 0;
+  transition: all 200ms $ease-out;
+}
+
+.province-info {
+  @include flex-column;
+  flex: 1;
+  gap: 4rpx;
+}
+
+.province-name {
+  font-size: $font-md;
+  font-weight: 500;
+  color: $gray-900;
+}
+
+.province-count {
+  font-size: $font-xs;
+  color: $gray-600;
+}
+
+.province-time {
+  font-family: 'DIN Alternate', -apple-system;
+  font-size: $font-lg;
+  font-weight: 600;
+  color: $primary;
+  flex-shrink: 0;
+}
+
+// 加载提示
+.loading-tip,
+.no-more-tip {
+  @include flex-center;
+  padding: $spacing-lg;
+  
+  text {
+    font-size: $font-xs;
+    color: $gray-600;
+  }
+}
+
+// 我的排名
+.my-rank-bar {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom) + 100rpx);
+  left: $spacing-md;
+  right: $spacing-md;
+  height: 88rpx;
+  @include glass-effect;
+  border-radius: $radius-xl;
+  @include shadow-md;
+  @include flex-center;
+  z-index: 100;
+  animation: slide-up 300ms $ease-out;
+}
+
+.my-rank-text {
+  font-size: $font-sm;
+  color: $gray-900;
+}
+
+.rank-num {
+  font-family: 'DIN Alternate', -apple-system;
+  font-size: $font-lg;
+  font-weight: 700;
+  color: $primary;
+}

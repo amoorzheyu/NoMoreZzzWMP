@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "rank-item": "../../components/rank-item/rank-item",
+    "skeleton": "../../components/skeleton/skeleton",
+    "empty-state": "../../components/empty-state/empty-state"
+  },
+  "navigationBarTitleText": "榜单",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#FAFBFC"
+}

@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.stat-card {
+  @include card;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat-item {
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.stat-number {
+  font-family: 'DIN Alternate', -apple-system;
+  font-size: $font-2xl;
+  font-weight: 700;
+  color: $gray-900;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: $font-xs;
+  color: $gray-600;
+}

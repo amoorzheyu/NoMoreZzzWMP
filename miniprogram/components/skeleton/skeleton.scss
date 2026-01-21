@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+.skeleton-circle,
+.skeleton-rect,
+.skeleton-text {
+  background: linear-gradient(
+    90deg,
+    $gray-100 0%,
+    $gray-300 20%,
+    $gray-100 40%,
+    $gray-100 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+.skeleton-circle {
+  border-radius: 50%;
+}
+
+.skeleton-text {
+  border-radius: 4rpx;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

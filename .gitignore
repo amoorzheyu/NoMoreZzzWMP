@@ -1,0 +1,45 @@
+# 文档
+/docs
+
+# 微信开发者工具个人配置
+project.private.config.json
+
+# Node.js 依赖
+node_modules/
+
+# 构建产物
+dist/
+build/
+
+# 环境变量文件
+.env
+.env.local
+.env.development
+.env.production
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+.tmp/
+temp/
+*.tmp
+*.temp
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# Cursor
+.cursorignore

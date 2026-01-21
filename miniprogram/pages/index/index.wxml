@@ -1,0 +1,61 @@
+<view class="index-page">
+  <!-- 天空背景 -->
+  <view class="sky-background" style="background: {{skyGradient}}">
+    <!-- 时间显示 -->
+    <view class="time-display" wx:if="{{!loading}}">
+      <text class="hours-minutes">{{currentTime.hours}}:{{currentTime.minutes}}</text>
+      <text class="seconds">:{{currentTime.seconds}}</text>
+    </view>
+    
+    <!-- 骨架屏 -->
+    <view class="time-skeleton" wx:else>
+      <skeleton type="rect" width="400rpx" height="120rpx" radius="24rpx" />
+    </view>
+  </view>
+
+  <!-- 打卡按钮 -->
+  <view class="check-btn-container">
+    <check-btn 
+      wx:if="{{!loading}}"
+      checked="{{todayChecked}}" 
+      check-time="{{checkInTime}}"
+      bind:checkin="handleCheckIn"
+    />
+    <skeleton wx:else type="circle" width="160rpx" height="160rpx" />
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="stats-brief" wx:if="{{!loading}}">
+    <text class="stat-item">连续 <text class="stat-value">{{stats.continuousDays}}</text> 天</text>
+    <text class="stat-divider">·</text>
+    <text class="stat-item">累计 <text class="stat-value">{{stats.totalDays}}</text> 天</text>
+  </view>
+  <view class="stats-skeleton" wx:else>
+    <skeleton type="text" width="200rpx" height="32rpx" />
+  </view>
+
+  <!-- 今日早起榜 -->
+  <view class="today-ranking-card" wx:if="{{todayRankingList.length > 0}}">
+    <view class="card-header">
+      <text class="card-title">🌅 今晨最早</text>
+    </view>
+    <view class="ranking-list">
+      <view class="ranking-item" wx:for="{{todayRankingList}}" wx:key="userId">
+        <text class="ranking-rank">{{item.rank}}.</text>
+        <text class="ranking-name">{{item.nickName}}</text>
+        <text class="ranking-time">{{item.checkInTime}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 空状态 -->
+  <empty-state
+    wx:elif="{{!loading && todayRankingList.length === 0}}"
+    icon="🌅"
+    title="还没有人打卡"
+    description="做第一个迎接黎明的人吧"
+  />
+
+  <!-- Toast 组件 -->
+  <toast id="toast" />
+</view>

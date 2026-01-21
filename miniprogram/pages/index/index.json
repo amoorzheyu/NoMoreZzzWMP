@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "check-btn": "../../components/check-btn/check-btn",
+    "toast": "../../components/toast/toast",
+    "skeleton": "../../components/skeleton/skeleton",
+    "empty-state": "../../components/empty-state/empty-state"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#FAFBFC"
+}

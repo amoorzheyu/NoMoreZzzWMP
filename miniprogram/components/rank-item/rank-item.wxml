@@ -1,0 +1,16 @@
+<view class="rank-item {{isTop3 ? 'top-' + rank : ''}}">
+  <view class="rank-badge">
+    <text class="rank-number">{{rank}}</text>
+  </view>
+  
+  <image class="avatar" src="{{avatarUrl}}" mode="aspectFill" />
+  
+  <view class="info">
+    <text class="nickname">{{nickName}}</text>
+    <text class="location">{{province}} · {{city}}</text>
+  </view>
+  
+  <view class="value">
+    <text class="value-text">{{valueText}}</text>
+  </view>
+</view>

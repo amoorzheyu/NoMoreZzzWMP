@@ -1,0 +1,23 @@
+<view class="statistics-page">
+  <view class="stats-card">
+    <text class="card-title">数据概览</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">{{overview.totalDays}}</text>
+        <text class="stat-label">总天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{overview.continuousDays}}</text>
+        <text class="stat-label">连续天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{overview.avgCheckInTime}}</text>
+        <text class="stat-label">平均时间</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{overview.checkInRate}}%</text>
+        <text class="stat-label">打卡率</text>
+      </view>
+    </view>
+  </view>
+</view>

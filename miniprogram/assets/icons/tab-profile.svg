@@ -1,0 +1,19 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 种子发芽 - 象征成长 -->
+  
+  <!-- 土壤 -->
+  <ellipse cx="24" cy="34" rx="16" ry="4" fill="#94A3B8" opacity="0.3"/>
+  <line x1="8" y1="34" x2="40" y2="34" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- 种子（部分露出） -->
+  <ellipse cx="24" cy="32" rx="4" ry="3" fill="#94A3B8"/>
+  
+  <!-- 嫩芽（小） -->
+  <path d="M 24 32 Q 24 28, 24 24" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- 左叶 -->
+  <path d="M 24 26 Q 20 24, 18 26" stroke="#94A3B8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- 右叶 -->
+  <path d="M 24 28 Q 28 26, 30 28" stroke="#94A3B8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>

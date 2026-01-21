@@ -1,0 +1,123 @@
+// ===== 醒了么 - SCSS 混入 =====
+
+@import './variables';
+
+// === Flex 布局 ===
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// === 卡片样式 ===
+@mixin card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin: 0 $spacing-md $spacing-md;
+}
+
+// === 按钮基础 ===
+@mixin button-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  transition: all 150ms $ease-out;
+  
+  &::after {
+    border: none;
+  }
+}
+
+// === 主按钮 ===
+@mixin button-primary {
+  @include button-base;
+  height: 88rpx;
+  border-radius: $radius-xl;
+  background: $primary-gradient;
+  color: white;
+  font-size: $font-md;
+  font-weight: 600;
+  
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+// === 次按钮 ===
+@mixin button-secondary {
+  @include button-base;
+  height: 72rpx;
+  border-radius: 36rpx;
+  background: $gray-100;
+  color: $gray-900;
+  font-size: $font-sm;
+  
+  &:active {
+    background: $gray-300;
+  }
+}
+
+// === 文字省略 ===
+@mixin ellipsis($lines: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  @if $lines == 1 {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+}
+
+// === 毛玻璃效果 ===
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+// === 阴影 ===
+@mixin shadow-sm {
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+@mixin shadow-md {
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+@mixin shadow-lg {
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.12);
+}
+
+// === 安全区域 ===
+@mixin safe-area-bottom($padding: 0rpx) {
+  padding-bottom: calc(env(safe-area-inset-bottom) + #{$padding});
+}
+
+@mixin safe-area-top($padding: 0rpx) {
+  padding-top: calc(env(safe-area-inset-top) + #{$padding});
+}

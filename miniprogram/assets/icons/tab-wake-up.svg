@@ -1,0 +1,29 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 地平线 -->
+  <line x1="4" y1="32" x2="44" y2="32" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- 云朵 1 -->
+  <path d="M8 28 Q 10 26, 12 28" stroke="#94A3B8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- 云朵 2 -->
+  <path d="M36 26 Q 38 24, 40 26" stroke="#94A3B8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- 太阳（半圆） -->
+  <defs>
+    <linearGradient id="sunGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 太阳主体 -->
+  <circle cx="24" cy="32" r="10" fill="url(#sunGradient)"/>
+  <path d="M 14 32 Q 24 36, 34 32" fill="#FFD700" opacity="0.3"/>
+  
+  <!-- 光芒 -->
+  <g opacity="0.6">
+    <line x1="24" y1="18" x2="24" y2="14" stroke="#FFB347" stroke-width="2" stroke-linecap="round"/>
+    <line x1="32" y1="21" x2="35" y2="18" stroke="#FFB347" stroke-width="2" stroke-linecap="round"/>
+    <line x1="16" y1="21" x2="13" y2="18" stroke="#FFB347" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

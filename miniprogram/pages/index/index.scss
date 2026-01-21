@@ -1,0 +1,186 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/animation';
+
+.index-page {
+  min-height: 100vh;
+  @include flex-column;
+  background: $bg-primary;
+}
+
+// 天空背景
+.sky-background {
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 48rpx 48rpx;
+  transition: background 2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  
+  // 微妙的光晕效果（增强版）
+  &::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500rpx;
+    height: 500rpx;
+    background: radial-gradient(circle, 
+      rgba(255, 255, 255, 0.15) 0%, 
+      rgba(255, 255, 255, 0.08) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  
+  // 额外的光效层
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    background: linear-gradient(to top, 
+      rgba(255, 255, 255, 0.05) 0%, 
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+}
+
+// 时间显示
+.time-display {
+  @include flex-start;
+  align-items: baseline;
+  position: relative;
+  z-index: 1;
+}
+
+.hours-minutes {
+  font-family: -apple-system-font, 'Helvetica Neue', sans-serif;
+  font-variant-numeric: tabular-nums;  // ← 等宽数字
+  font-size: $font-3xl;
+  font-weight: 700;
+  letter-spacing: -4rpx;
+  color: white;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.3);
+  transition: opacity 150ms $ease-out;
+}
+
+.seconds {
+  font-family: 'DIN Alternate', -apple-system;
+  font-size: $font-xl;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 4rpx;
+  // 秒数淡入淡出
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.time-skeleton,
+.stats-skeleton {
+  @include flex-center;
+}
+
+// 打卡按钮容器
+.check-btn-container {
+  @include flex-center;
+  position: relative;
+  
+  // 添加呼吸光晕（仅未打卡时）
+  &::before {
+    content: '';
+    position: absolute;
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.2) 0%, transparent 70%);
+    animation: pulse 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+// 统计信息
+.stats-brief {
+  @include flex-center;
+  padding: $spacing-lg;
+  gap: $spacing-md;
+  animation: fade-in 400ms $ease-out 200ms both; // 延迟淡入
+}
+
+.stat-item {
+  font-size: $font-sm;
+  color: $gray-600;
+}
+
+.stat-value {
+  font-family: 'DIN Alternate', -apple-system;
+  font-size: $font-lg;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.stat-divider {
+  color: $gray-300;
+}
+
+// 今日排行卡片
+.today-ranking-card {
+  @include card;
+  margin-top: $spacing-md;
+  animation: slide-up 400ms $ease-out 400ms both; // 延迟滑入
+}
+
+.card-header {
+  margin-bottom: $spacing-md;
+}
+
+.card-title {
+  font-size: $font-md;
+  font-weight: 600;
+  color: $gray-900;
+}
+
+.ranking-list {
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.ranking-item {
+  @include flex-between;
+  padding: $spacing-sm 0;
+  
+  // 逐项淡入
+  @for $i from 1 through 3 {
+    &:nth-child(#{$i}) {
+      animation: fade-in 300ms $ease-out #{600ms + $i * 100ms} both;
+    }
+  }
+}
+
+.ranking-rank {
+  width: 48rpx;
+  font-size: $font-sm;
+  font-weight: 600;
+  color: $gray-600;
+}
+
+.ranking-name {
+  flex: 1;
+  font-size: $font-sm;
+  color: $gray-900;
+  @include ellipsis(1);
+}
+
+.ranking-time {
+  font-family: 'DIN Alternate', -apple-system;
+  font-size: $font-sm;
+  font-weight: 600;
+  color: $primary;
+}

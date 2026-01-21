@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.empty-state {
+  @include flex-column;
+  align-items: center;
+  padding: $spacing-xl * 2 $spacing-md;
+  gap: $spacing-md;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  opacity: 0.6;  // ← 提高可见度
+  filter: drop-shadow(0 4rpx 12rpx rgba(0, 0, 0, 0.1));
+}
+
+.empty-title {
+  font-size: $font-lg;
+  font-weight: 600;
+  color: $gray-900;
+}
+
+.empty-desc {
+  font-size: $font-sm;
+  color: $gray-600;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.empty-action {
+  margin-top: $spacing-md;
+  padding: $spacing-sm $spacing-lg;
+  background: $primary;
+  color: white;
+  border-radius: $radius-xl;
+  font-size: $font-sm;
+}

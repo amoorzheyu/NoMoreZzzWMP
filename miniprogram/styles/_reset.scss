@@ -1,0 +1,46 @@
+// ===== 醒了么 - 样式重置 =====
+
+@import './variables';
+
+page {
+  background: $bg-primary;
+  color: $gray-900;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 
+               'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: $font-sm;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 移除默认边距
+view, text, image, button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// 按钮重置
+button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  line-height: inherit;
+  
+  &::after {
+    border: none;
+  }
+}
+
+// 图片
+image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+// 滚动容器
+scroll-view {
+  height: 100%;
+}

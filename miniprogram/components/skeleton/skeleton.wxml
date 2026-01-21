@@ -1,0 +1,11 @@
+<!-- 骨架屏组件 - 优雅的等待 -->
+<view class="skeleton {{type}}">
+  <!-- 圆形骨架 -->
+  <view class="skeleton-circle" wx:if="{{type === 'circle'}}" style="width: {{width}}; height: {{height}}"></view>
+  
+  <!-- 矩形骨架 -->
+  <view class="skeleton-rect" wx:if="{{type === 'rect'}}" style="width: {{width}}; height: {{height}}; border-radius: {{radius}}"></view>
+  
+  <!-- 文本骨架 -->
+  <view class="skeleton-text" wx:if="{{type === 'text'}}" style="width: {{width}}; height: {{height}}"></view>
+</view>

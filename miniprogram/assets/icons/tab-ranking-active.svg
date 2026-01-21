@@ -1,0 +1,34 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="flame1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#E94560"/>
+    </linearGradient>
+    <linearGradient id="flame2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 第二名火焰（左侧） -->
+  <path d="M 14 32 Q 14 28, 16 24 Q 14 26, 14 24 Q 16 20, 14 16 Q 14 20, 16 24 Q 18 20, 16 16 Q 16 18, 18 20 Q 18 24, 16 28 Q 16 32, 14 32" 
+        fill="url(#flame2)" opacity="0.9"/>
+  <path d="M 14 28 Q 15 26, 16 24 Q 15 26, 14 28" fill="#FFE4B5" opacity="0.8"/>
+  
+  <!-- 第一名火焰（中间，最高，最亮） -->
+  <path d="M 24 34 Q 24 28, 26 22 Q 24 24, 24 20 Q 26 14, 24 10 Q 24 14, 26 20 Q 28 14, 26 10 Q 26 12, 28 16 Q 28 22, 26 28 Q 26 34, 24 34" 
+        fill="url(#flame1)"/>
+  <path d="M 24 28 Q 25 24, 26 20 Q 25 24, 24 28" fill="#FFFACD" opacity="0.8"/>
+  
+  <!-- 光晕 -->
+  <ellipse cx="24" cy="20" rx="8" ry="12" fill="#FFB347" opacity="0.2"/>
+  
+  <!-- 第三名火焰（右侧） -->
+  <path d="M 34 32 Q 34 28, 36 24 Q 34 26, 34 24 Q 36 20, 34 16 Q 34 20, 36 24 Q 38 20, 36 16 Q 36 18, 38 20 Q 38 24, 36 28 Q 36 32, 34 32" 
+        fill="url(#flame2)" opacity="0.9"/>
+  <path d="M 34 28 Q 35 26, 36 24 Q 35 26, 34 28" fill="#FFE4B5" opacity="0.8"/>
+  
+  <!-- 底部装饰线 -->
+  <line x1="10" y1="36" x2="38" y2="36" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

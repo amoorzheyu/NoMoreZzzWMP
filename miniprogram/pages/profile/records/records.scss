@@ -1,0 +1,121 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.records-page {
+  min-height: 100vh;
+  background: $bg-primary;
+  padding: $spacing-md;
+}
+
+// 月份选择器
+.month-selector {
+  @include flex-between;
+  padding: $spacing-lg;
+  background: white;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-md;
+}
+
+.month-arrow {
+  @include flex-center;
+  width: 64rpx;
+  height: 64rpx;
+  font-size: $font-xl;
+  color: $gray-600;
+  font-weight: bold;
+}
+
+.month-text {
+  font-size: $font-lg;
+  font-weight: 600;
+  color: $gray-900;
+}
+
+// 日历
+.calendar {
+  background: white;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+.week-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.week-day {
+  @include flex-center;
+  font-size: $font-xs;
+  color: $gray-600;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: $spacing-md;
+}
+
+.calendar-item {
+  @include flex-center;
+  aspect-ratio: 1;
+}
+
+.day-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  border: 2rpx solid $gray-300;
+  @include flex-center;
+  position: relative;
+  
+  &.checked {
+    background: $success;
+    border-color: $success;
+  }
+  
+  &.today {
+    border-color: $primary;
+    border-width: 3rpx;
+    
+    &.checked {
+      background: $success;
+      box-shadow: 0 0 0 4rpx rgba(16, 185, 129, 0.2);
+    }
+  }
+}
+
+.day-number {
+  position: absolute;
+  top: -32rpx;
+  font-size: $font-xs;
+  color: $gray-900;
+  font-weight: 600;
+}
+
+// 月度统计
+.month-summary {
+  @include card;
+  display: flex;
+  justify-content: space-around;
+}
+
+.summary-item {
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.summary-value {
+  font-family: 'DIN Alternate', -apple-system;
+  font-size: $font-2xl;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.summary-label {
+  font-size: $font-xs;
+  color: $gray-600;
+}

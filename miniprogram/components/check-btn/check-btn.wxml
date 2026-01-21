@@ -1,0 +1,18 @@
+<view class="check-btn-wrapper">
+  <button 
+    class="check-btn {{checked ? 'checked' : ''}} {{pressing ? 'pressing' : ''}} {{animating ? 'animating' : ''}}"
+    hover-class="none"
+    bindtouchstart="onTouchStart"
+    bindtouchend="onTouchEnd"
+    bindtouchcancel="onTouchCancel"
+    bindtap="handleTap"
+  >
+    <view class="btn-content">
+      <text class="btn-text" wx:if="{{!checked}}">醒了</text>
+      <view class="checked-content" wx:else>
+        <text class="check-icon">✓</text>
+        <text class="check-time">{{checkTime}}</text>
+      </view>
+    </view>
+  </button>
+</view>

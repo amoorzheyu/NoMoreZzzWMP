@@ -1,0 +1,41 @@
+<view class="records-page">
+  <!-- 月份选择 -->
+  <view class="month-selector">
+    <view class="month-arrow" bindtap="prevMonth">‹</view>
+    <text class="month-text">{{currentYear}}年 {{currentMonth}}月</text>
+    <view class="month-arrow" bindtap="nextMonth">›</view>
+  </view>
+
+  <!-- 日历 -->
+  <view class="calendar">
+    <!-- 星期标题 -->
+    <view class="week-header">
+      <text class="week-day" wx:for="{{weekDays}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <!-- 日期点阵 -->
+    <view class="calendar-grid">
+      <view class="calendar-item" wx:for="{{calendarDays}}" wx:key="date">
+        <view class="day-dot {{item.status}}" wx:if="{{item.date}}">
+          <text class="day-number" wx:if="{{item.isToday}}">{{item.day}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 月度统计 -->
+  <view class="month-summary" wx:if="{{summary}}">
+    <view class="summary-item">
+      <text class="summary-value">{{summary.checkedDays}}</text>
+      <text class="summary-label">打卡天数</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-value">{{summary.checkInRate}}%</text>
+      <text class="summary-label">打卡率</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-value">{{summary.avgCheckInTime}}</text>
+      <text class="summary-label">平均时间</text>
+    </view>
+  </view>
+</view>

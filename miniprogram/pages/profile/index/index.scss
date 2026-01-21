@@ -1,0 +1,85 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.profile-page {
+  min-height: 100vh;
+  background: $bg-primary;
+  padding: $spacing-md;
+}
+
+// 用户信息卡片
+.user-card {
+  @include card;
+  @include flex-start;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.user-info {
+  @include flex-column;
+  gap: $spacing-xs;
+  flex: 1;
+}
+
+.nickname {
+  font-size: $font-lg;
+  font-weight: 600;
+  color: $gray-900;
+}
+
+.location {
+  font-size: $font-sm;
+  color: $gray-600;
+}
+
+.edit-btn {
+  margin-top: $spacing-sm;
+  padding: $spacing-xs $spacing-md;
+  background: $gray-100;
+  border-radius: $radius-md;
+  display: inline-block;
+  align-self: flex-start;
+  
+  text {
+    font-size: $font-xs;
+    color: $gray-900;
+  }
+}
+
+// 功能列表
+.function-card {
+  @include card;
+  padding: 0;
+}
+
+.function-item {
+  @include flex-between;
+  padding: $spacing-lg $spacing-lg;
+  
+  & + & {
+    border-top: 1rpx solid $gray-100;
+  }
+}
+
+.function-icon {
+  font-size: $font-lg;
+  margin-right: $spacing-md;
+}
+
+.function-text {
+  flex: 1;
+  font-size: $font-md;
+  color: $gray-900;
+}
+
+.arrow {
+  font-size: $font-lg;
+  color: $gray-300;
+}

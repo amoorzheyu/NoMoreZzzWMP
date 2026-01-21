@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+@import '../../styles/animation';
+
+.toast-container {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-xl;
+  
+  &.toast-in {
+    animation: toast-in 300ms $ease-out forwards;
+  }
+  
+  &.toast-out {
+    animation: toast-out 300ms $ease-out forwards;
+  }
+}
+
+.toast-text {
+  font-size: $font-sm;
+  color: white;
+  white-space: nowrap;
+}

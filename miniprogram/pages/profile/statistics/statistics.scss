@@ -1,0 +1,44 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.statistics-page {
+  min-height: 100vh;
+  background: $bg-primary;
+  padding: $spacing-md;
+}
+
+.stats-card {
+  @include card;
+}
+
+.card-title {
+  display: block;
+  font-size: $font-lg;
+  font-weight: 600;
+  color: $gray-900;
+  margin-bottom: $spacing-lg;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-lg;
+}
+
+.stat-item {
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.stat-value {
+  font-family: 'DIN Alternate', -apple-system;
+  font-size: $font-2xl;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.stat-label {
+  font-size: $font-xs;
+  color: $gray-600;
+}
