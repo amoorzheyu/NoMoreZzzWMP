@@ -4,7 +4,7 @@
   active-color="#FF6B35"
   inactive-color="#94A3B8"
 >
-  <van-tabbar-item icon="sun-o">
+  <van-tabbar-item icon="smile-o">
     醒了
   </van-tabbar-item>
   <van-tabbar-item icon="fire-o">
