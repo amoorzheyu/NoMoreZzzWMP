@@ -324,8 +324,8 @@ Page({
       // 处理空值情况，使用默认值（新用户或无打卡记录是正常场景）
       const newData = {
         stats: {
-          continuousDays: profile?.statistics?.continuousDays || 0,
-          totalDays: profile?.statistics?.totalDays || 0,
+          continuousDays: (profile && profile.statistics && profile.statistics.continuousDays) || 0,
+          totalDays: (profile && profile.statistics && profile.statistics.totalDays) || 0,
         },
       };
 
