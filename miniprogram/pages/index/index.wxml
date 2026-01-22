@@ -37,7 +37,8 @@
   <!-- 今日早起榜 -->
   <view class="today-ranking-card" wx:if="{{todayRankingList.length > 0}}">
     <view class="card-header">
-      <text class="card-title">🌅 今晨最早</text>
+      <view class="title-accent"></view>
+      <text class="card-title">今晨最早</text>
     </view>
     <view class="ranking-list">
       <view class="ranking-item" wx:for="{{todayRankingList}}" wx:key="userId">

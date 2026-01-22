@@ -138,7 +138,21 @@
 }
 
 .card-header {
+  @include flex-start;
+  gap: $spacing-sm;
   margin-bottom: $spacing-md;
+  position: relative;
+  
+
+}
+
+// 标题左侧渐变竖线装饰
+.title-accent {
+  width: 6rpx;
+  height: 32rpx;
+  background: $primary-gradient;
+  border-radius: 3rpx;
+  flex-shrink: 0;
 }
 
 .card-title {
