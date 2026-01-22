@@ -1,46 +1,16 @@
-<view class="tab-bar">
-  <!-- 醒了 -->
-  <view 
-    class="tab-item {{selected === 0 ? 'active' : ''}}"
-    bindtap="switchTab"
-    data-index="0"
-    data-path="/pages/index/index"
-  >
-    <view class="tab-icon">
-      <!-- 太阳图标 - Unicode -->
-      <text class="icon-text">{{selected === 0 ? '☀️' : '🌤'}}</text>
-    </view>
-    <text class="tab-label">醒了</text>
-  </view>
-
-  <!-- 榜单 -->
-  <view 
-    class="tab-item {{selected === 1 ? 'active' : ''}}"
-    bindtap="switchTab"
-    data-index="1"
-    data-path="/pages/ranking/ranking"
-  >
-    <view class="tab-icon">
-      <!-- 火焰图标 - Unicode -->
-      <text class="icon-text">{{selected === 1 ? '🔥' : '🕯️'}}</text>
-    </view>
-    <text class="tab-label">榜单</text>
-  </view>
-
-  <!-- 我的 -->
-  <view 
-    class="tab-item {{selected === 2 ? 'active' : ''}}"
-    bindtap="switchTab"
-    data-index="2"
-    data-path="/pages/profile/index/index"
-  >
-    <view class="tab-icon">
-      <!-- 嫩芽图标 - Unicode -->
-      <text class="icon-text">{{selected === 2 ? '🌱' : '🌾'}}</text>
-    </view>
-    <text class="tab-label">我的</text>
-  </view>
-
-  <!-- 动态指示器 -->
-  <view class="tab-indicator" style="transform: translateX({{indicatorOffset}}rpx)"></view>
-</view>
+<van-tabbar 
+  active="{{ selected }}" 
+  bind:change="onChange"
+  active-color="#FF6B35"
+  inactive-color="#94A3B8"
+>
+  <van-tabbar-item icon="sun-o">
+    醒了
+  </van-tabbar-item>
+  <van-tabbar-item icon="fire-o">
+    榜单
+  </van-tabbar-item>
+  <van-tabbar-item icon="friends-o">
+    我的
+  </van-tabbar-item>
+</van-tabbar>

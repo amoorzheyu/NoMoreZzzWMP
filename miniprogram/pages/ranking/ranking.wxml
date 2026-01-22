@@ -1,152 +1,161 @@
 <view class="ranking-page">
   <!-- Tab 切换 -->
-  <view class="tabs">
-    <view 
-      class="tab-item {{activeTab === 0 ? 'active' : ''}}"
-      bindtap="switchTab"
-      data-tab="0"
-    >
-      <text class="tab-text">今日早起</text>
-    </view>
-    <view 
-      class="tab-item {{activeTab === 1 ? 'active' : ''}}"
-      bindtap="switchTab"
-      data-tab="1"
-    >
-      <text class="tab-text">坚持最久</text>
-    </view>
-    <view 
-      class="tab-item {{activeTab === 2 ? 'active' : ''}}"
-      bindtap="switchTab"
-      data-tab="2"
-    >
-      <text class="tab-text">各省份</text>
-    </view>
-  </view>
-
-  <!-- 榜单内容 -->
-  <scroll-view 
-    class="ranking-content" 
-    scroll-y
-    refresher-enabled="{{true}}"
-    refresher-triggered="{{refreshing}}"
-    bindrefresherrefresh="onRefresh"
-    bindscrolltolower="onLoadMore"
+  <van-tabs 
+    active="{{ activeTab }}" 
+    bind:change="onTabChange"
+    color="#FF6B35"
+    title-active-color="#FF6B35"
+    sticky
   >
     <!-- 今日早起榜 -->
-    <view wx:if="{{activeTab === 0}}">
-      <!-- 骨架屏 -->
-      <view class="ranking-skeleton" wx:if="{{loading && todayList.length === 0}}">
-        <view class="ranking-list">
-          <view class="skeleton-item" wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
-            <skeleton type="circle" width="48rpx" height="48rpx" />
-            <skeleton type="circle" width="64rpx" height="64rpx" />
-            <skeleton type="rect" width="200rpx" height="32rpx" />
-            <skeleton type="rect" width="80rpx" height="32rpx" />
+    <van-tab title="今日早起">
+      <scroll-view 
+        class="ranking-content" 
+        scroll-y
+        refresher-enabled="{{true}}"
+        refresher-triggered="{{refreshing}}"
+        bindrefresherrefresh="onRefresh"
+        bindscrolltolower="onLoadMore"
+      >
+        <!-- 骨架屏 -->
+        <view class="ranking-skeleton" wx:if="{{loading && todayList.length === 0}}">
+          <view class="ranking-list">
+            <view class="skeleton-item" wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
+              <skeleton type="circle" width="48rpx" height="48rpx" />
+              <skeleton type="circle" width="64rpx" height="64rpx" />
+              <skeleton type="rect" width="200rpx" height="32rpx" />
+              <skeleton type="rect" width="80rpx" height="32rpx" />
+            </view>
           </view>
         </view>
-      </view>
-      
-      <!-- 榜单列表 -->
-      <view class="ranking-list" wx:elif="{{todayList.length > 0}}">
-        <rank-item
-          wx:for="{{todayList}}"
-          wx:key="userId"
-          rank="{{item.rank}}"
-          nick-name="{{item.nickName}}"
-          avatar-url="{{item.avatarUrl}}"
-          province="{{item.province}}"
-          city="{{item.city}}"
-          value-text="{{item.checkInTime}}"
+        
+        <!-- 榜单列表 -->
+        <view class="ranking-list" wx:elif="{{todayList.length > 0}}">
+          <rank-item
+            wx:for="{{todayList}}"
+            wx:key="userId"
+            rank="{{item.rank}}"
+            nick-name="{{item.nickName}}"
+            avatar-url="{{item.avatarUrl}}"
+            province="{{item.province}}"
+            city="{{item.city}}"
+            value-text="{{item.checkInTime}}"
+          />
+        </view>
+        
+        <!-- 空状态 -->
+        <empty-state
+          wx:else
+          icon="🌄"
+          title="今天还没有人打卡"
+          description="做第一个迎接黎明的人"
         />
-      </view>
-      
-      <!-- 空状态 -->
-      <empty-state
-        wx:else
-        icon="🌄"
-        title="今天还没有人打卡"
-        description="做第一个迎接黎明的人"
-      />
-    </view>
+
+        <!-- 加载状态 -->
+        <view class="loading-tip" wx:if="{{loading && todayList.length > 0}}">
+          <text>加载中...</text>
+        </view>
+
+        <view class="no-more-tip" wx:if="{{noMore && !loading}}">
+          <text>已经到底啦</text>
+        </view>
+      </scroll-view>
+    </van-tab>
 
     <!-- 坚持最久榜 -->
-    <view wx:if="{{activeTab === 1}}">
-      <view class="ranking-skeleton" wx:if="{{loading && continuousList.length === 0}}">
-        <view class="ranking-list">
-          <view class="skeleton-item" wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
-            <skeleton type="circle" width="48rpx" height="48rpx" />
-            <skeleton type="circle" width="64rpx" height="64rpx" />
-            <skeleton type="rect" width="200rpx" height="32rpx" />
-            <skeleton type="rect" width="80rpx" height="32rpx" />
+    <van-tab title="坚持最久">
+      <scroll-view 
+        class="ranking-content" 
+        scroll-y
+        refresher-enabled="{{true}}"
+        refresher-triggered="{{refreshing}}"
+        bindrefresherrefresh="onRefresh"
+        bindscrolltolower="onLoadMore"
+      >
+        <view class="ranking-skeleton" wx:if="{{loading && continuousList.length === 0}}">
+          <view class="ranking-list">
+            <view class="skeleton-item" wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
+              <skeleton type="circle" width="48rpx" height="48rpx" />
+              <skeleton type="circle" width="64rpx" height="64rpx" />
+              <skeleton type="rect" width="200rpx" height="32rpx" />
+              <skeleton type="rect" width="80rpx" height="32rpx" />
+            </view>
           </view>
         </view>
-      </view>
-      
-      <view class="ranking-list" wx:elif="{{continuousList.length > 0}}">
-        <rank-item
-          wx:for="{{continuousList}}"
-          wx:key="userId"
-          rank="{{item.rank}}"
-          nick-name="{{item.nickName}}"
-          avatar-url="{{item.avatarUrl}}"
-          province="{{item.province}}"
-          city="{{item.city}}"
-          value-text="{{item.totalDays}}天"
+        
+        <view class="ranking-list" wx:elif="{{continuousList.length > 0}}">
+          <rank-item
+            wx:for="{{continuousList}}"
+            wx:key="userId"
+            rank="{{item.rank}}"
+            nick-name="{{item.nickName}}"
+            avatar-url="{{item.avatarUrl}}"
+            province="{{item.province}}"
+            city="{{item.city}}"
+            value-text="{{item.totalDays}}天"
+          />
+        </view>
+        
+        <empty-state
+          wx:else
+          icon="💪"
+          title="暂无数据"
+          description="开始打卡，加入坚持者行列"
         />
-      </view>
-      
-      <empty-state
-        wx:else
-        icon="💪"
-        title="暂无数据"
-        description="开始打卡，加入坚持者行列"
-      />
-    </view>
+
+        <!-- 加载状态 -->
+        <view class="loading-tip" wx:if="{{loading && continuousList.length > 0}}">
+          <text>加载中...</text>
+        </view>
+
+        <view class="no-more-tip" wx:if="{{noMore && !loading}}">
+          <text>已经到底啦</text>
+        </view>
+      </scroll-view>
+    </van-tab>
 
     <!-- 各省份榜 -->
-    <view wx:if="{{activeTab === 2}}">
-      <view class="ranking-skeleton" wx:if="{{loading && provinceData.list.length === 0}}">
-        <view class="province-list">
-          <view class="skeleton-province-item" wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
-            <skeleton type="circle" width="48rpx" height="48rpx" />
-            <skeleton type="rect" width="150rpx" height="48rpx" />
-            <skeleton type="rect" width="80rpx" height="32rpx" />
+    <van-tab title="各省份">
+      <scroll-view 
+        class="ranking-content" 
+        scroll-y
+        refresher-enabled="{{true}}"
+        refresher-triggered="{{refreshing}}"
+        bindrefresherrefresh="onRefresh"
+      >
+        <view class="ranking-skeleton" wx:if="{{loading && provinceData.list.length === 0}}">
+          <view class="province-list">
+            <view class="skeleton-province-item" wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
+              <skeleton type="circle" width="48rpx" height="48rpx" />
+              <skeleton type="rect" width="150rpx" height="48rpx" />
+              <skeleton type="rect" width="80rpx" height="32rpx" />
+            </view>
           </view>
         </view>
-      </view>
-      
-      <view class="province-list" wx:elif="{{provinceData.list.length > 0}}">
-        <view 
-          class="province-item {{provinceData.myProvince.province === item.province ? 'is-mine' : ''}}"
-          wx:for="{{provinceData.list}}"
-          wx:key="province"
-        >
-          <view class="province-rank">{{item.rank}}</view>
-          <view class="province-info">
-            <text class="province-name">{{item.province}}</text>
-            <text class="province-count">{{item.userCount}} 人</text>
+        
+        <view class="province-list" wx:elif="{{provinceData.list.length > 0}}">
+          <view 
+            class="province-item {{provinceData.myProvince.province === item.province ? 'is-mine' : ''}}"
+            wx:for="{{provinceData.list}}"
+            wx:key="province"
+          >
+            <view class="province-rank">{{item.rank}}</view>
+            <view class="province-info">
+              <text class="province-name">{{item.province}}</text>
+              <text class="province-count">{{item.userCount}} 人</text>
+            </view>
+            <view class="province-time">{{item.avgCheckInTime}}</view>
           </view>
-          <view class="province-time">{{item.avgCheckInTime}}</view>
         </view>
-      </view>
-      
-      <empty-state
-        wx:else
-        icon="🗺️"
-        title="暂无省份数据"
-      />
-    </view>
-
-    <!-- 加载状态 -->
-    <view class="loading-tip" wx:if="{{loading && (todayList.length > 0 || continuousList.length > 0)}}">
-      <text>加载中...</text>
-    </view>
-
-    <view class="no-more-tip" wx:if="{{noMore && !loading && activeTab !== 2}}">
-      <text>已经到底啦</text>
-    </view>
-  </scroll-view>
+        
+        <empty-state
+          wx:else
+          icon="🗺️"
+          title="暂无省份数据"
+        />
+      </scroll-view>
+    </van-tab>
+  </van-tabs>
 
   <!-- 我的排名 -->
   <view class="my-rank-bar" wx:if="{{myRank > 0 && !loading}}">

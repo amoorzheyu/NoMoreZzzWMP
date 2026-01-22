@@ -47,8 +47,8 @@ Page({
   /**
    * 切换 Tab
    */
-  switchTab(e: any) {
-    const tab = parseInt(e.currentTarget.dataset.tab);
+  onTabChange(e: any) {
+    const tab = e.detail.name || e.detail.index;
     this.setData({ activeTab: tab });
     
     // 切换后加载数据

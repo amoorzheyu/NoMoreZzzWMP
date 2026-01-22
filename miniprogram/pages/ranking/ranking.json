@@ -2,7 +2,9 @@
   "usingComponents": {
     "rank-item": "../../components/rank-item/rank-item",
     "skeleton": "../../components/skeleton/skeleton",
-    "empty-state": "../../components/empty-state/empty-state"
+    "empty-state": "../../components/empty-state/empty-state",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-tab": "@vant/weapp/tab/index"
   },
   "navigationBarTitleText": "榜单",
   "navigationBarBackgroundColor": "#FFFFFF",

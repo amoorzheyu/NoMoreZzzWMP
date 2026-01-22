@@ -8,58 +8,7 @@
   padding-bottom: calc(env(safe-area-inset-bottom) + 180rpx);
 }
 
-// Tab 切换
-.tabs {
-  @include flex-center;
-  background: white;
-  padding: $spacing-sm 0;
-  border-bottom: 1rpx solid $gray-100;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.tab-item {
-  flex: 1;
-  @include flex-center;
-  padding: $spacing-sm 0;
-  position: relative;
-  
-  &.active .tab-text {
-    color: $primary;
-    font-weight: 600;
-  }
-  
-  &.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 48rpx;
-    height: 4rpx;
-    background: $primary;
-    border-radius: 2rpx;
-    animation: tab-indicator 200ms $ease-out;
-  }
-}
-
-.tab-text {
-  font-size: $font-md;
-  color: $gray-600;
-  transition: all 200ms $ease-out;
-}
-
-@keyframes tab-indicator {
-  from {
-    width: 0;
-    opacity: 0;
-  }
-  to {
-    width: 48rpx;
-    opacity: 1;
-  }
-}
+// Tab 区域已由 van-tabs 接管，移除自定义样式
 
 // 榜单内容
 .ranking-content {

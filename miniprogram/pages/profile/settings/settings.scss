@@ -8,38 +8,11 @@
 }
 
 .settings-section {
-  background: white;
   border-radius: $radius-lg;
   overflow: hidden;
   margin-bottom: $spacing-xl;
 }
 
-.setting-item {
-  @include flex-between;
-  padding: $spacing-lg;
-}
-
-.setting-label {
-  font-size: $font-md;
-  color: $gray-900;
-}
-
-.setting-btn {
-  padding: $spacing-xs $spacing-md;
-  background: $gray-100;
-  border-radius: $radius-sm;
-  font-size: $font-sm;
-  color: $gray-900;
-  border: none;
-  
-  &::after {
-    border: none;
-  }
-}
-
-.logout-btn {
-  @include button-primary;
-  background: white;
-  color: #FF3B30;
-  border: 1rpx solid #FF3B30;
+.logout-container {
+  padding: 0 $spacing-md;
 }
