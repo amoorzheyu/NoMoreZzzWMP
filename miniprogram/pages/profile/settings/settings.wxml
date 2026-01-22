@@ -1,14 +1,30 @@
 <view class="settings-page">
-  <view class="settings-section">
-    <view class="setting-item">
-      <text class="setting-label">清除缓存</text>
-      <button class="setting-btn" bindtap="clearCache">
-        <text>清除</text>
-      </button>
-    </view>
+  <!-- 设置项 -->
+  <van-cell-group class="settings-section">
+    <van-cell 
+      title="清除缓存" 
+      icon="delete-o"
+      is-link
+      bindtap="clearCache"
+    />
+  </van-cell-group>
+
+  <!-- 退出登录 -->
+  <view class="logout-container">
+    <van-button 
+      type="danger" 
+      plain 
+      round 
+      block
+      bindtap="handleLogout"
+    >
+      退出登录
+    </van-button>
   </view>
 
-  <view class="logout-btn" bindtap="handleLogout">
-    <text>退出登录</text>
-  </view>
+  <!-- 确认弹窗 -->
+  <van-dialog 
+    id="van-dialog"
+    use-slot
+  />
 </view>

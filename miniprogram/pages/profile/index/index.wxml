@@ -15,30 +15,34 @@
   <stat-card items="{{statItems}}" />
 
   <!-- 功能列表 -->
-  <view class="function-card">
-    <view class="function-item" bindtap="goToRecords">
-      <text class="function-icon">📅</text>
-      <text class="function-text">打卡记录</text>
-      <text class="arrow">›</text>
-    </view>
-    <view class="function-item" bindtap="goToStatistics">
-      <text class="function-icon">📊</text>
-      <text class="function-text">统计分析</text>
-      <text class="arrow">›</text>
-    </view>
-  </view>
+  <van-cell-group class="function-card">
+    <van-cell 
+      title="打卡记录" 
+      icon="clock-o" 
+      is-link 
+      bindtap="goToRecords"
+    />
+    <van-cell 
+      title="统计分析" 
+      icon="chart-trending-o" 
+      is-link 
+      bindtap="goToStatistics"
+    />
+  </van-cell-group>
 
   <!-- 设置列表 -->
-  <view class="function-card">
-    <view class="function-item" bindtap="goToSettings">
-      <text class="function-icon">⚙️</text>
-      <text class="function-text">设置</text>
-      <text class="arrow">›</text>
-    </view>
-    <view class="function-item" bindtap="goToAbout">
-      <text class="function-icon">❓</text>
-      <text class="function-text">关于</text>
-      <text class="arrow">›</text>
-    </view>
-  </view>
+  <van-cell-group class="function-card">
+    <van-cell 
+      title="设置" 
+      icon="setting-o" 
+      is-link 
+      bindtap="goToSettings"
+    />
+    <van-cell 
+      title="关于" 
+      icon="info-o" 
+      is-link 
+      bindtap="goToAbout"
+    />
+  </van-cell-group>
 </view>

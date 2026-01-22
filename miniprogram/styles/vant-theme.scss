@@ -1,0 +1,30 @@
+// ===== Vant Weapp 主题定制 =====
+
+page {
+  // 主色调 - 日出橙
+  --van-primary-color: #FF6B35;
+  
+  // 成功色 - 薄荷绿
+  --van-success-color: #10B981;
+  
+  // 文字色
+  --van-text-color: #0F172A;
+  --van-text-color-2: #475569;
+  --van-text-color-3: #94A3B8;
+  
+  // 边框色
+  --van-border-color: #F1F5F9;
+  
+  // 圆角
+  --van-border-radius-sm: 8rpx;
+  --van-border-radius-md: 16rpx;
+  --van-border-radius-lg: 24rpx;
+  
+  // 间距
+  --van-padding-base: 24rpx;
+  --van-padding-xs: 8rpx;
+  --van-padding-sm: 16rpx;
+  --van-padding-md: 24rpx;
+  --van-padding-lg: 32rpx;
+  --van-padding-xl: 48rpx;
+}

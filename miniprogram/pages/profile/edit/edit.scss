@@ -7,29 +7,16 @@
   padding: $spacing-md;
 }
 
-.form-section {
-  background: white;
-  border-radius: $radius-lg;
-  overflow: hidden;
+// 头像区域
+.avatar-section {
+  @include flex-column;
+  align-items: center;
+  padding: $spacing-xl 0;
+  margin-bottom: $spacing-md;
 }
 
-.form-item {
-  padding: $spacing-lg;
-  
-  & + & {
-    border-top: 1rpx solid $gray-100;
-  }
-}
-
-.form-label {
-  display: block;
-  font-size: $font-sm;
-  color: $gray-600;
-  margin-bottom: $spacing-sm;
-}
-
-// 头像选择
 .avatar-btn {
+  position: relative;
   padding: 0;
   background: none;
   border: none;
@@ -40,25 +27,63 @@
 }
 
 .avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 160rpx;
+  height: 160rpx;
   border-radius: 50%;
+  display: block;
 }
 
-// 输入框
-.form-input {
-  width: 100%;
-  font-size: $font-md;
-  color: $gray-900;
-  padding: $spacing-sm 0;
+.avatar-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  @include flex-center;
+  opacity: 0;
+  transition: opacity 200ms $ease-out;
+  
+  .avatar-btn:active & {
+    opacity: 1;
+  }
 }
 
-.form-textarea {
-  width: 100%;
-  min-height: 120rpx;
+.avatar-tip {
+  font-size: $font-xs;
+  color: $gray-600;
+  margin-top: $spacing-sm;
+}
+
+// 表单区域
+.form-section {
+  background: white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  margin-bottom: $spacing-md;
+}
+
+.form-item {
+  padding: $spacing-lg;
+  @include flex-between;
+  align-items: center;
+  
+  & + & {
+    border-top: 1rpx solid $gray-100;
+  }
+  
+  &.gender-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.form-label {
   font-size: $font-md;
   color: $gray-900;
-  padding: $spacing-sm 0;
+  margin-right: $spacing-md;
 }
 
 // 性别选择
@@ -67,13 +92,14 @@
   gap: $spacing-md;
 }
 
-.gender-item {
+.gender-option {
   @include flex-center;
-  padding: $spacing-sm $spacing-lg;
+  padding: $spacing-xs $spacing-lg;
   background: $gray-100;
   border-radius: $radius-md;
   font-size: $font-sm;
   color: $gray-900;
+  transition: all 200ms $ease-out;
   
   &.active {
     background: $primary;
@@ -81,8 +107,7 @@
   }
 }
 
-// 保存按钮
-.save-btn {
-  @include button-primary;
-  margin-top: $spacing-xl;
+// 按钮容器
+.btn-container {
+  padding: 0 $spacing-md;
 }

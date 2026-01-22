@@ -10,6 +10,8 @@ node_modules/
 # 构建产物
 dist/
 build/
+/miniprogram/miniprogram_npm
+
 
 # 环境变量文件
 .env

@@ -1,6 +1,10 @@
-<view class="check-btn-wrapper">
-  <button 
-    class="check-btn {{checked ? 'checked' : ''}} {{pressing ? 'pressing' : ''}} {{animating ? 'animating' : ''}}"
+<view class="check-btn-wrapper {{checked ? 'checked' : ''}} {{pressing ? 'pressing' : ''}} {{animating ? 'animating' : ''}}">
+  <van-button 
+    class="check-btn"
+    custom-class="check-btn-custom"
+    round
+    type="default"
+    custom-style="width: 160rpx; height: 160rpx; border-radius: 80rpx; border: none;"
     hover-class="none"
     bindtouchstart="onTouchStart"
     bindtouchend="onTouchEnd"
@@ -14,5 +18,5 @@
         <text class="check-time">{{checkTime}}</text>
       </view>
     </view>
-  </button>
+  </van-button>
 </view>

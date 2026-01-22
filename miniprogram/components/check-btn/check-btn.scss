@@ -6,25 +6,77 @@
   align-items: center;
   justify-content: center;
   padding: $spacing-xl 0;
+  position: relative;
+  
+  // 按压状态 - 应用于外层容器
+  &.pressing {
+    .check-btn-custom {
+      transform: scale(0.92) translateY(2rpx);
+      box-shadow: 
+        0 4rpx 16rpx rgba(255, 107, 53, 0.3),
+        0 1rpx 4rpx rgba(255, 107, 53, 0.2);
+      
+      &::before {
+        opacity: 0.5;
+      }
+    }
+  }
+  
+  // 已打卡状态
+  &.checked {
+    .check-btn-custom {
+      background: $success !important;
+      box-shadow: 
+        0 8rpx 32rpx rgba(16, 185, 129, 0.4),
+        0 2rpx 8rpx rgba(16, 185, 129, 0.2);
+      
+      &::before {
+        background: linear-gradient(135deg, 
+          rgba(255, 255, 255, 0.3) 0%, 
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+    }
+  }
+  
+  // 打卡成功动画
+  &.animating {
+    .check-btn-custom {
+      animation: check-success 600ms $bounce forwards;
+    }
+    
+    // 成功光环
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(50% - 100rpx);
+      left: calc(50% - 100rpx);
+      width: 200rpx;
+      height: 200rpx;
+      border-radius: 50%;
+      border: 4rpx solid rgba(16, 185, 129, 0.4);
+      animation: success-ring 600ms ease-out forwards;
+      pointer-events: none;
+    }
+  }
 }
 
-.check-btn {
+// 覆盖 van-button 的样式
+.check-btn-custom {
   width: 160rpx;
   height: 160rpx;
-  border-radius: 80rpx;  // ← 精确到一半，确保完美圆形
-  background: $primary-gradient;
+  border-radius: 80rpx;
+  background: $primary-gradient !important;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 
-    0 8rpx 32rpx rgba(255, 107, 53, 0.3),  // ← 降低透明度
+    0 8rpx 32rpx rgba(255, 107, 53, 0.3),
     0 2rpx 8rpx rgba(255, 107, 53, 0.15);
   transition: all 150ms $ease-out;
   border: none;
   padding: 0;
   position: relative;
-  
-  // 确保按钮不被压缩变形
   flex-shrink: 0;
   
   // 高光效果
@@ -41,55 +93,12 @@
     );
     border-radius: 50%;
     pointer-events: none;
+    z-index: 1;
   }
   
+  // 移除 van-button 的默认伪元素边框
   &::after {
-    border: none;
-  }
-  
-  // 按压状态 - 模拟真实物理按压
-  &.pressing {
-    transform: scale(0.92) translateY(2rpx);
-    box-shadow: 
-      0 4rpx 16rpx rgba(255, 107, 53, 0.3),
-      0 1rpx 4rpx rgba(255, 107, 53, 0.2);
-    
-    &::before {
-      opacity: 0.5;
-    }
-  }
-  
-  // 已打卡状态
-  &.checked {
-    background: $success;
-    box-shadow: 
-      0 8rpx 32rpx rgba(16, 185, 129, 0.4),
-      0 2rpx 8rpx rgba(16, 185, 129, 0.2);
-    
-    &::before {
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.3) 0%, 
-        rgba(255, 255, 255, 0) 100%
-      );
-    }
-  }
-  
-  // 打卡成功动画
-  &.animating {
-    animation: check-success 600ms $bounce forwards;
-    
-    // 成功光环
-    &::after {
-      content: '';
-      position: absolute;
-      top: -20rpx;
-      left: -20rpx;
-      right: -20rpx;
-      bottom: -20rpx;
-      border-radius: 50%;
-      border: 4rpx solid rgba(16, 185, 129, 0.4);
-      animation: success-ring 600ms ease-out forwards;
-    }
+    border: none !important;
   }
 }
 
