@@ -1,0 +1,72 @@
+<view class="setup-page" style="padding-top: {{statusBarHeight + 100}}px;">
+  <!-- 头像选择区域 -->
+  <view class="avatar-section">
+    <view class="avatar-glow-wrapper">
+      <button 
+        class="avatar-btn {{avatarUploading ? 'uploading' : ''}}" 
+        open-type="chooseAvatar" 
+        bind:chooseavatar="onChooseAvatar"
+        disabled="{{avatarUploading}}"
+      >
+        <image 
+          wx:if="{{avatarUrl}}" 
+          class="avatar" 
+          src="{{avatarUrl}}" 
+          mode="aspectFill" 
+        />
+        <view wx:else class="avatar-placeholder">
+          <view class="camera-icon"></view>
+        </view>
+        
+        <view wx:if="{{avatarUploading}}" class="avatar-loading">
+          <view class="loading-spinner"></view>
+        </view>
+      </button>
+    </view>
+    
+    <view class="avatar-tip">
+      {{avatarUrl ? '点击更换头像' : '点击选择头像'}}
+    </view>
+  </view>
+
+  <!-- 标题区域 -->
+  <view class="title-section">
+    <view class="main-title">欢迎来到醒了么</view>
+    <view class="sub-title">设置头像和昵称，开始你的早起之旅</view>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="form-section">
+    <view class="input-group">
+      <view class="input-label">昵称</view>
+      <input
+        class="glass-input"
+        type="nickname"
+        value="{{nickName}}"
+        placeholder="请输入昵称"
+        placeholder-class="input-placeholder"
+        maxlength="12"
+        bind:input="onNickNameInput"
+        bind:blur="onNickNameBlur"
+        bind:change="onNickNameChange"
+      />
+    </view>
+  </view>
+
+  <!-- 开始使用按钮 -->
+  <view class="btn-container">
+    <button 
+      class="start-btn {{canSubmit ? 'btn-active' : 'btn-disabled'}}"
+      disabled="{{!canSubmit}}"
+      bindtap="handleStart"
+    >
+      <text class="btn-text">开始使用</text>
+      <view wx:if="{{canSubmit}}" class="btn-icon">→</view>
+    </button>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="footer-tip">
+    <text class="tip-text">头像和昵称是必填项</text>
+  </view>
+</view>

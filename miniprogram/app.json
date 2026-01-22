@@ -6,7 +6,8 @@
     "pages/profile/records/records",
     "pages/profile/statistics/statistics",
     "pages/profile/edit/edit",
-    "pages/profile/settings/settings"
+    "pages/profile/settings/settings",
+    "pages/profile/setup/setup"
   ],
   "window": {
     "navigationBarTextStyle": "black",

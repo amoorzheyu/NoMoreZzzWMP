@@ -35,6 +35,9 @@ App({
         const userInfo = await getUserProfile();
         console.log('步骤1完成: token有效，使用现有token');
         this.globalData.userInfo = userInfo;
+        
+        // 检查用户是否需要完善信息
+        this.checkUserInfoComplete(userInfo);
         return;
       } catch (error: any) {
         console.log('步骤1失败: token无效，清除token并重新登录');
@@ -62,6 +65,9 @@ App({
         this.globalData.userInfo = result.userInfo;
         
         console.log('登录流程全部完成');
+        
+        // 检查用户是否需要完善信息
+        this.checkUserInfoComplete(result.userInfo);
       }
     } catch (error: any) {
       console.log('登录流程失败于步骤:', error.message);
@@ -70,6 +76,19 @@ App({
       this.globalData.userInfo = null;
     } finally {
       this.globalData.isLogging = false;
+    }
+  },
+  
+  /**
+   * 检查用户信息是否完善
+   */
+  checkUserInfoComplete(userInfo: any) {
+    // 如果昵称或头像为空，跳转到完善信息页面
+    if (!userInfo.nickName || !userInfo.avatarUrl) {
+      console.log('用户信息未完善，跳转到完善信息页面');
+      wx.reLaunch({
+        url: '/pages/profile/setup/setup',
+      });
     }
   },
 });
